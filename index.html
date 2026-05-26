@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+    </style>
+
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Montserrat";
+        }
+
+        header {
+            height: 80px;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            border-bottom: solid 1px black;
+            align-items: center;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .card {
+            width: 200px;
+            height: 200px;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 5px;
+            box-shadow: 0px 0px 25px 5px rgba(0, 0, 0, 0.121);
+            border-radius: 10px;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+
+        .miniatura {
+            width: 100px;
+        }
+
+        h4 {
+            text-align: center;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h2>Lista de Miniprojetos</h2>
+    </header>
+
+    <div class="container">
+        <div class="card" onclick="card()">
+            <h4>Card de Produto com Efeito de Interação</h4>
+            <div class="miniatura">
+                <img src="img/card.png" alt="">
+            </div>
+        </div>
+        <script>
+            function card() {
+                window.location.href = "card.html";
+            }
+        </script>
+</body>
+
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card de Produto com Efeito de Interação</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            box-sizing: border-box;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .card {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-direction: column;
+            width: 300px;
+            height: 450px;
+            border: solid 1px black;
+            padding: 5px;
+            border-radius: 8px;
+        }
+
+        button {
+            width: 100%;
+            height: 50px;
+            background: #01CAFE;
+            border-radius: 8px;
+            border: none;
+            font-weight: bold;
+            font-size: 1.4rem;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: translateY(-5px);
+        }
+
+        .img:hover {
+            background-image: url(img/ChatGPT\ Image\ 25\ de\ mai.\ de\ 2026\,\ 19_45_24.png);
+        }
+
+        .img {
+            height: 250px;
+            width: 250px;
+            border-radius: 8px;
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .img::before,
+        .img::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            transition: opacity 0.5s ease;
+        }
+
+        .img::before {
+            background-image: url(img/R.jpg);
+            opacity: 1;
+        }
+
+        .img::after {
+            background-image: url(img/ChatGPT\ Image\ 25\ de\ mai.\ de\ 2026\,\ 19_45_24.png);
+            opacity: 0;
+        }
+
+        .img:hover::after {
+            opacity: 1;
+        }
+
+        .img:hover::before {
+            opacity: 0;
+        }
+
+        strong {
+            font-size: 1.6rem;
+            margin: 10px 0px 10px 0px;
+        }
+
+        .preco:hover {
+            color: #01CAFE;
+        }
+
+        .card:hover h1 {
+            color: blueviolet;
+        }
+
+        .card:hover strong {
+            color: #01CAFE;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <h1>Skate</h1>
+            <div class="img">
+            </div>
+            <strong class="preco">R$ 1000,00</strong>
+            <button>Adicionar</button>
+        </div>
+    </div>
+</body>
+
+</html>

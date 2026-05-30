@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria de Filtro</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .foto {
+            display: inline-block;
+        }
+
+        img {
+            width: 300px;
+        }
+
+        #web:checked~.container .foto,
+        #mobile:checked~.container .foto {
+            display: none;
+        }
+
+        #web:checked~.container .web {
+            display: inline-block;
+        }
+
+        #mobile:checked~.container .mobile {
+            display: inline-block;
+        }
+
+        #todos:checked~.container .foto{
+            display: inline-block;
+        }
+
+    </style>
+</head>
+<body>
+        <input type="radio" name="filtro" id="todos" checked>
+        <label for="todos">Todos</label>
+
+        <input type="radio" name="filtro" id="web">
+        <label for="web">Web</label>
+
+        <input type="radio" name="filtro" id="mobile">
+        <label for="mobile">Mobile</label>
+    <div class="container">
+        <div class="foto web"><img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5" alt=""></div>
+        <div class="foto mobile"><img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c" alt=""></div>
+        <div class="foto web"><img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d" alt=""></div>
+        <div class="foto mobile"><img src="https://images.unsplash.com/photo-1533022139390-e31c488d69e2" alt=""></div>
+        <div class="foto web"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f" alt=""></div>
+        <div class="foto mobile"><img src="https://images.unsplash.com/photo-1567581935884-3349723552ca" alt=""></div>
+    </div>
+</body>
+</html>

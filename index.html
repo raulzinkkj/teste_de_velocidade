@@ -8,7 +8,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
     </style>
 
-    <title></title>
+    <title>Lista de Miniprojetos</title>
     <style>
         * {
             margin: 0;
@@ -28,6 +28,8 @@
 
         .container {
             padding: 20px;
+            display: flex;
+            gap: 30px;
         }
 
         .card {
@@ -50,6 +52,9 @@
 
         .miniatura {
             width: 100px;
+            height: 148.25px;
+            display: flex;
+            align-items: center;
         }
 
         h4 {
@@ -71,9 +76,52 @@
                 <img src="img/card.png" alt="">
             </div>
         </div>
+
+        <div class="card" onclick="interruptor()">
+            <h4>Interruptor de Tema</h4>
+            <div class="miniatura">
+                <img src="img/dia_noite.png" alt="">
+            </div>
+        </div>
+
+        <div class="card" onclick="filtro()">
+            <h4>Galeria de Filtro</h4>
+            <div class="miniatura">
+                <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d" alt="">
+            </div>
+        </div>
+        <div class="card" onclick="filtrojs()">
+            <h4>Galeria de Filtro-JS</h4>
+            <div class="miniatura">
+                <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d" alt="">
+            </div>
+        </div>
+        <div class="card" onclick="pomodoro()">
+            <h4>Pomodoro</h4>
+            <div class="miniatura">
+                <h1 style="font-size: 2.2rem;">25:00</h1>
+            </div>
+        </div>
+
         <script>
             function card() {
                 window.location.href = "card.html";
+            }
+
+            function interruptor() {
+                window.location.href = "dia_noite.html";
+            }
+
+            function filtro() {
+                window.location.href = "galeria_filtro.html";
+            }
+
+            function filtrojs() {
+                window.location.href = "galeria_filtro_js.html";
+            }
+
+            function pomodoro() {
+                window.location.href = "pomodoro.html";
             }
         </script>
 </body>

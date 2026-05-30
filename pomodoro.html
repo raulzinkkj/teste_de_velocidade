@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="tempo2">00:00</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+    </style>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Montserrat";
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        h1 {
+            font-size: 10rem;
+        }
+
+        button {
+            width: 100px;
+            border-radius: 50%;
+            padding: 10px;
+            background: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:active {
+            transform: translateY(5px);
+        }
+
+        .botoes {
+            display: flex;
+            gap: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="tempo">00:00</h1>
+
+    <div class="botoes">
+        <button onclick="iniciar()"><img src="img/play-solid-full.svg" alt=""></button>
+        <button onclick="pausa()"><img src="img/pause-solid-full.svg" alt=""></button>
+        <button onclick="reiniciar()"><img src="img/rotate-left-solid-full.svg" alt=""></button>
+    </div>
+    <script>
+        let tempo = 25 * 60;
+        let cronometro;
+
+        function atualizarTela() {
+              document.body.style.backgroundColor = 'white';
+
+            let minutos = Math.floor(tempo / 60);
+            let segundos = tempo % 60;
+
+            let hora = String(minutos).padStart(2, "0") + ":" +
+                String(segundos).padStart(2, "0");
+            document.getElementById("tempo").textContent = hora;
+            document.getElementById("tempo2").textContent = hora;
+        }
+
+        function iniciar() {
+            cronometro = setInterval(() => {
+
+                if (tempo > 0) {
+                    tempo--;
+                    atualizarTela();
+                    
+                } else {
+                    clearInterval(cronometro);
+                    document.body.style.backgroundColor =  "#cb2519";
+                    alert("Tempo Esgotado!" );
+                    
+                }
+            }, 1000);
+            
+        }
+
+        function pausa() {
+            clearInterval(cronometro);
+        }
+
+        function reiniciar() {
+            clearInterval(cronometro);
+            tempo = 25 * 60;
+            atualizarTela();
+        }
+
+        atualizarTela();
+    </script>
+</body>
+
+</html>

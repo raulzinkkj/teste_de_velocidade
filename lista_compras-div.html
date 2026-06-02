@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+    </style>
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Montserrat";
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+
+        #lista {
+            display: grid;
+            grid-template-columns: repeat(4, 150px);
+            gap: 30px;
+        }
+
+        .nome {
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 25px 5px rgba(0, 0, 0, 0.121);
+        }
+
+        .input {
+            padding: 20px;
+            margin-top: 10px;
+        }
+
+        input {
+            height: 35px;
+            border-radius: 8px;
+            border: none;
+            box-shadow: 0px 0px 25px 5px rgba(0, 0, 0, 0.121);
+            margin-right: 15px;
+        }
+
+        button {
+            height: 35px;
+            border-radius: 8px;
+            border: none;
+            box-shadow: 0px 0px 25px 5px rgba(0, 0, 0, 0.121);
+            background: #288ad6;
+            font-weight: bold;
+            padding: 0 10px 0 10px;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="input">
+        <input type="text" id="nome">
+        <button onclick="adicionar()">Adicionar</button>
+    </div>
+    <div class="container">
+
+        <div id="lista"></div>
+    </div>
+
+    <script>
+        let nomes = [];
+
+        //Carrega nomes salvos
+        if (localStorage.getItem("nomes")) {
+            nomes = JSON.parse(localStorage.getItem("nomes"));
+            renderizar();
+        }
+
+        function adicionar() {
+
+            let input = document.getElementById("nome");
+
+            if (input.value.trim() === "") return;
+
+            nomes.push(input.value);
+
+            salvar()
+            renderizar();
+
+            input.value = "";
+        }
+
+        function salvar() {
+            localStorage.setItem(
+                "nomes",
+                JSON.stringify(nomes)
+            );
+        }
+
+        function renderizar() {
+
+            let nome = document.getElementById("lista");
+
+            lista.innerHTML = "";
+
+            nomes.forEach(nome => {
+
+                lista.innerHTML += `
+                <div class="nome">${nome}</div>
+                `;
+            });
+        }
+    </script>
+</body>
+
+</html>

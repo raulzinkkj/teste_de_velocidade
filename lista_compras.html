@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .concluida {
+            text-decoration: line-through;
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <input type="text" id="item">
+        <button onclick="adicionar()">Adicionar</button>
+        
+        <ul id="lista" ></ul>
+    </div>
+
+    <script>
+        let itens = [];
+
+        //Carrega tarefas salvas
+        if(localStorage.getItem("itens")){
+            itens = JSON.parse(localStorage.getItem("itens"));
+            renderizar();
+        }
+
+        function adicionar(){
+
+            let input = document.getElementById("item");
+
+            if(input.value.trim() === "") return;
+
+            itens.push(input.value);
+
+            salvar()
+            renderizar();
+
+            input.value = "";
+        }
+
+        function salvar(){
+            localStorage.setItem(
+                "itens",
+                JSON.stringify(itens)
+            );
+        }
+
+        function renderizar(){
+
+            let item = document.getElementById("lista");
+
+            lista.innerHTML = "";
+
+            itens.forEach(item => {
+
+                lista.innerHTML += `
+                <li onclick="concluir(this)">${item}</li>
+                `;
+            });
+        }
+
+        function concluir(elemento){
+            elemento.classList.toggle("concluida");
+        }
+    </script>
+</body>
+</html>

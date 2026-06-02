@@ -29,7 +29,10 @@
         .container {
             padding: 20px;
             display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
             gap: 30px;
+           
         }
 
         .card {
@@ -102,6 +105,12 @@
                 <h1 style="font-size: 2.2rem;">25:00</h1>
             </div>
         </div>
+        <div class="card" onclick="lista()">
+            <h4>Lista de Compras com localStorage</h4>
+            <div class="miniatura">
+                <img src="img/Captura de tela 2026-06-01 213458.png" alt="">
+            </div>
+        </div>
 
         <script>
             function card() {
@@ -122,6 +131,10 @@
 
             function pomodoro() {
                 window.location.href = "pomodoro.html";
+            }
+
+             function lista() {
+                window.location.href = "lista_compras.html";
             }
         </script>
 </body>

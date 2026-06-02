@@ -1,40 +1,122 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+    </style>
     <title>Document</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Montserrat";
+        }
+
         .concluida {
             text-decoration: line-through;
             opacity: 0.6;
         }
+
+        #lista {
+            display: grid;
+            grid-template-columns: repeat(4, 150px);
+            gap: 30px;
+        }
+
+        li {
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+            height: 100px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 25px 5px rgba(0, 0, 0, 0.121);
+            font-weight: bold;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        .remover {
+
+            height: 25px;
+            border-radius: 5px;
+            border: none;
+            box-shadow: 0px 0px 25px 5px rgba(0, 0, 0, 0.121);
+            background: #cb4747;
+            font-weight: bold;
+            padding: 0 10px 0 10px;
+            color: white;
+        }
+
+        input {
+            height: 35px;
+            border-radius: 8px;
+            border: none;
+            box-shadow: 0px 0px 25px 5px rgba(0, 0, 0, 0.121);
+            margin-right: 15px;
+        }
+
+        .input {
+            padding: 20px;
+            margin-top: 10px;
+        }
+
+        button {
+            height: 35px;
+            border-radius: 8px;
+            border: none;
+            box-shadow: 0px 0px 25px 5px rgba(0, 0, 0, 0.121);
+            background: #288ad6;
+            font-weight: bold;
+            padding: 0 10px 0 10px;
+            color: white;
+        }
+
+        .remover:hover {
+            background: #a60d0d;
+        }
     </style>
 </head>
+
 <body>
-    <div class="container">
+    <div class="input">
         <input type="text" id="item">
         <button onclick="adicionar()">Adicionar</button>
-        
-        <ul id="lista" ></ul>
+    </div>
+    <div class="container">
+        <ul id="lista"></ul>
     </div>
 
     <script>
         let itens = [];
 
         //Carrega tarefas salvas
-        if(localStorage.getItem("itens")){
+        if (localStorage.getItem("itens")) {
             itens = JSON.parse(localStorage.getItem("itens"));
             renderizar();
         }
 
-        function adicionar(){
+        function adicionar() {
 
             let input = document.getElementById("item");
 
-            if(input.value.trim() === "") return;
+            if (input.value.trim() === "") return;
 
-            itens.push(input.value);
+            itens.push({
+                texto: input.value,
+                concluida: false
+            });
 
             salvar()
             renderizar();
@@ -42,30 +124,46 @@
             input.value = "";
         }
 
-        function salvar(){
+        function salvar() {
             localStorage.setItem(
                 "itens",
                 JSON.stringify(itens)
             );
         }
 
-        function renderizar(){
+        function renderizar() {
 
-            let item = document.getElementById("lista");
+            let lista = document.getElementById("lista");
 
             lista.innerHTML = "";
 
-            itens.forEach(item => {
+            itens.forEach((item, indice) => {
 
                 lista.innerHTML += `
-                <li onclick="concluir(this)">${item}</li>
-                `;
+            <li class="${item.concluida ? 'concluida' : ''}"
+                onclick="concluir(${indice})">
+                ${item.texto} 
+                <button class="remover" onclick="remover(${indice})">Remover</button>
+            </li>
+           
+        `;
             });
         }
 
-        function concluir(elemento){
-            elemento.classList.toggle("concluida");
+        function concluir(indice) {
+            itens[indice].concluida = !itens[indice].concluida;
+            salvar();
+            renderizar();
+        }
+
+        function remover(indice) {
+
+            itens.splice(indice, 1);
+
+            salvar();
+            renderizar();
         }
     </script>
 </body>
+
 </html>
